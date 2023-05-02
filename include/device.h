@@ -23,21 +23,24 @@
 // Estado de cada electrovalvula
 struct elecVal
 {
-    bool evDepHuertoSec1 = false;
-    bool evDepHuertoSec2 = false;
+    bool evDepGaloBajoSec1 = false;
+    bool evDepGaloBajoSec2 = false;
 
 } elecVal;
 
 // Topic recibidos
-const char evDepHuertoSec1[] = "regar/huerto/sec1";
-const char evDepHuertoSec2[] = "regar/huerto/sec2";
+// const char evDepHuertoSec1[] = "regar/huerto/sec1";
+// const char evDepHuertoSec2[] = "regar/huerto/sec2";
+
+const char evDepGaloBajoSec1[] = "regar/galo/bajo/sec1";
+const char evDepGaloBajoSec2[] = "regar/galo/bajo/sec2";
 
 // Topic enviar estados
-const char evDepHuertoSec1State[] = "regar/huerto/sec1/state";
-const char evDepHuertoSec2State[] = "regar/huerto/sec2/state";
+// const char evDepHuertoSec1State[] = "regar/huerto/sec1/state";
+// const char evDepHuertoSec2State[] = "regar/huerto/sec2/state";
 
-// Topic enviar
-const char nivelDepHuerto[] = "nivel/deposito/huerto";
+const char evDepGaloBajoSec1State[] = "regar/galo/bajo/sec1/state";
+const char evDepGaloBajoSec2State[] = "regar/galo/bajo/sec2/state";
 
 void initPinDevice()
 {

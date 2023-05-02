@@ -59,11 +59,11 @@ void setup()
   // Inicia la tarea que recibe los datos por LoRa
   xTaskCreatePinnedToCore(receiveDataLora, "loraData", 2048, nullptr, 5, nullptr, 1);
 
-  // Inicia la cola que almacena los datos a enviar por el puerto serie
-  queue_lora_send = xQueueCreate(20, sizeof(char) * 32);
+  /*   // Inicia la cola que almacena los datos a enviar por el puerto serie
+    queue_lora_send = xQueueCreate(20, sizeof(char) * 32);
 
-  // Inicia la tarea que envia los datos por el puerto serie
-  xTaskCreatePinnedToCore(sendDataLora, "serial_tx", 2048, nullptr, 0, nullptr, 1);
+    // Inicia la tarea que envia los datos por el puerto serie
+    xTaskCreatePinnedToCore(sendDataLora, "LoRa_send", 2048, nullptr, 0, nullptr, 1); */
 
   write_log("Temporizador de medicion del nivel iniciado...");
 

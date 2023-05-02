@@ -8,33 +8,7 @@
 #include "debug_utils.h"
 #define DEBUG
 
-QueueHandle_t queue_lora_send = 0;
-
-void sendDataLora(void *pvParameter)
-{
-
-    char data_buffer[32] = {0};
-    String data = "";
-    for (;;)
-    {
-        if (xQueueReceive(queue_lora_send, &data_buffer, pdMS_TO_TICKS(100)) == pdTRUE)
-        {
-            data = String(data_buffer);
-
-            // send packet
-            LoRa.beginPacket();
-            LoRa.print(data);
-            LoRa.endPacket();
-
-            DEBUG_PRINT(data);
-            write_log("send LoRa: " + data);
-        }
-
-        vTaskDelay(pdMS_TO_TICKS(200));
-    }
-}
-
-void sendDataLora(String data)
+void send_data_lora(String data)
 {
     DEBUG_PRINT(data);
 
@@ -43,7 +17,8 @@ void sendDataLora(String data)
     LoRa.print(data);
     LoRa.endPacket();
 
-    write_log("send LoRa: " + data);
+    DEBUG_PRINT("LoRa send: " + data);
+    write_log("LoRa send: " + data);
 }
 
 #endif //_LORA_SEND_H_

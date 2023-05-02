@@ -10,16 +10,18 @@
 
 void data_lora_receive_control(String data)
 {
+    String send_state = "";
+
     // Comprueba si es la electrovalvula del sector 1 y pasa los datos a la funcion
     // que se encarga de activar o desactivar la electrovalvula
-    if (data.indexOf((String)evDepHuertoSec1) != -1)
+    if (data.indexOf((String)evDepGaloBajoSec1) != -1)
     {
         String payload = data.substring(data.indexOf("=") + 1);
 
-        DEBUG_PRINT((String)evDepHuertoSec1 + "=" + payload);
+        DEBUG_PRINT((String)evDepGaloBajoSec1 + "=" + payload);
 
         // Control sector 1
-        if (payload == ON && elecVal.evDepHuertoSec1 == false)
+        if (payload == ON && elecVal.evDepGaloBajoSec1 == false)
         {
             DEBUG_PRINT("Sector_1=ON");
 
@@ -27,7 +29,7 @@ void data_lora_receive_control(String data)
             vTaskDelay(500);
             digitalWrite(EV_SEC_1_ON, HIGH);
 
-            elecVal.evDepHuertoSec1 = true;
+            elecVal.evDepGaloBajoSec1 = true;
         }
         else if (payload == OFF)
         {
@@ -37,22 +39,24 @@ void data_lora_receive_control(String data)
             vTaskDelay(500);
             digitalWrite(EV_SEC_1_OFF, HIGH);
 
-            elecVal.evDepHuertoSec1 = false;
+            elecVal.evDepGaloBajoSec1 = false;
         }
 
         // Envia los datos mediante lora
-        xQueueSend(queue_lora_send, data.c_str(), pdMS_TO_TICKS(100));
+        send_state = (String)evDepGaloBajoSec1State + "=" + payload;
+
+        send_data_lora(send_state);
     }
 
     // Comprueba si es la electrovalvula del sector 2 y pasa los datos a la funcion
     // que se encarga de activar o desactivar la electrovalvula
-    if (data.indexOf((String)evDepHuertoSec2) != -1)
+    if (data.indexOf((String)evDepGaloBajoSec2) != -1)
     {
         String payload = data.substring(data.indexOf("=") + 1);
 
-        DEBUG_PRINT((String)evDepHuertoSec2 + "=" + payload);
+        DEBUG_PRINT((String)evDepGaloBajoSec2 + "=" + payload);
 
-        if (payload == ON && elecVal.evDepHuertoSec1 == false)
+        if (payload == ON && elecVal.evDepGaloBajoSec2 == false)
         {
             DEBUG_PRINT("Sector_2=ON");
 
@@ -60,7 +64,7 @@ void data_lora_receive_control(String data)
             vTaskDelay(500);
             digitalWrite(EV_SEC_2_ON, HIGH);
 
-            elecVal.evDepHuertoSec1 = true;
+            elecVal.evDepGaloBajoSec2 = true;
         }
         else if (payload == OFF)
         {
@@ -70,11 +74,13 @@ void data_lora_receive_control(String data)
             vTaskDelay(500);
             digitalWrite(EV_SEC_2_OFF, HIGH);
 
-            elecVal.evDepHuertoSec1 = false;
+            elecVal.evDepGaloBajoSec2 = false;
         }
 
         // Envia los datos mediante lora
-        xQueueSend(queue_lora_send, data.c_str(), pdMS_TO_TICKS(100));
+        send_state = (String)evDepGaloBajoSec2State + "=" + payload;
+
+        send_data_lora(send_state);
     }
 }
 
