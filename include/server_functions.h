@@ -216,4 +216,21 @@ void serverHandlers()
               request->send(response); });
 }
 
+// Inicia el servidor web
+void init_server()
+{
+  // Configura el servidor web
+  serverHandlers();
+
+  // Inicia ElegantOTA
+  AsyncElegantOTA.begin(&server);
+
+  // Inicia el servidor
+  server.begin();
+
+  write_log("Servidor HTTP iniciado...");
+
+  DEBUG_PRINT("Servidor HTTP iniciado...");
+}
+
 #endif //_SERVER_FUNCTIONS_H

@@ -9,8 +9,6 @@
 #define DEBUG
 #include "debug_utils.h"
 
-TimerHandle_t wifiReconnectTimer;
-
 void wifiConfigSTA(IPAddress local_ip, IPAddress gateway, IPAddress subnet, IPAddress dns1 = (uint32_t)0x00000000, IPAddress dns2 = (uint32_t)0x00000000)
 {
 
@@ -46,7 +44,8 @@ void wifiConnectAP()
     DEBUG_PRINT("IP as soft AP: " + WiFi.softAPIP().toString());
 }
 
-bool wifiConnectSTA() // wifi_mode_t mode, const char *ssidSTA, const char *passSTA
+// Conecta a la red wifi externa
+bool wifiConnectSTA()
 {
     Config configData;
 
@@ -112,7 +111,7 @@ void WiFiEvent(WiFiEvent_t event)
         DEBUG_PRINT("WiFi lost connection");
         write_log("WiFi lost connection");
 
-        xTimerStart(wifiReconnectTimer, 0);
+        WiFi.reconnect();
         break;
     }
 }

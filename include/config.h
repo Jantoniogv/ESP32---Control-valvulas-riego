@@ -15,25 +15,24 @@
 class Config
 {
 private:
-    wifi_mode_t wifiType;
+    // Variables inicializacion wifi
+    static wifi_mode_t wifiType;
 
     // Constates conexion STA wifi
-    String ssidSTA;
-    String passSTA;
+    static String ssidSTA;
+    static String passSTA;
 
     // Constates conexion PA wifi
-    String ssidAP;
-    String passAP;
+    static String ssidAP;
+    static String passAP;
 
-    String hostname;
+    static String hostname;
 
-    String IPsta;
-    String gateway;
-    String subnet;
+    static String IPsta;
+    static String gateway;
+    static String subnet;
 
-    String IPap;
-
-    String dataConfigMemory;
+    static String IPap;
 
     // Metodos serializar y deserializar la configuracion
     String SerializeObject()
@@ -122,13 +121,6 @@ public:
         DEBUG_PRINT("Configuracion de red= " + readMemFlash("config", "config"));
     };
 
-    /* static Config *getConfig()
-    {
-        static Config config;
-
-        return &config;
-    } */
-
     void saveChange() { saveMemFlash("config", "config", SerializeObject()); };
 
     void setWifiType(wifi_mode_t type) { wifiType = type; };
@@ -163,5 +155,26 @@ public:
     const String getGateway() { return gateway; };
     const String getSubnet() { return subnet; };
 };
+
+/// Inicializacion de las variables estaticas de la clase Config ///
+
+// Variables inicializacion wifi
+wifi_mode_t Config::wifiType = initWifiType;
+
+// Constates conexion STA wifi
+String Config::ssidSTA = initSsidSTA;
+String Config::passSTA = initPassSTA;
+
+// Constates conexion PA wifi
+String Config::ssidAP = initSsidAP;
+String Config::passAP = initPassAP;
+
+String Config::IPap = initIPap;
+
+String Config::hostname = initHost;
+
+String Config::IPsta = initIPsta;
+String Config::gateway = initGateway;
+String Config::subnet = initSubnet;
 
 #endif //_CONFIG_H_
