@@ -26,7 +26,7 @@ void init_lora()
 
     if (!LoRa.begin(BAND_LORA))
     {
-        DEBUG_PRINT("Starting LoRa failed!");
+        DEBUG_PRINT("Inicio LoRa fallado...");
         while (1)
             ;
     }
@@ -37,7 +37,17 @@ void init_lora()
 
     write_log("LoRa iniciado...");
 
-    DEBUG_PRINT("Init LoRa ok");
+    DEBUG_PRINT("LoRa iniciado...");
 }
 
+void end_lora()
+{
+    SPI.end();
+
+    LoRa.end();
+
+    write_log("LoRa finalizado...");
+
+    DEBUG_PRINT("LoRa finalizado...");
+}
 #endif //_LORA_INIT_H

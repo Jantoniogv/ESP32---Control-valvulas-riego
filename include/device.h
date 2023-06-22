@@ -58,10 +58,10 @@ void initPinDevice()
     pinMode(EV_SEC_2_OFF, OUTPUT);
     digitalWrite(EV_SEC_2_OFF, HIGH);
 
-    DEBUG_PRINT("Pines de las electrovalvulas y motor iniciados...");
+    DEBUG_PRINT("Pines de las electrovalvulas...");
 
     // Escribe en el log inicializacion de los pines
-    write_log("Pines de las electrovalvulas y motor iniciados...");
+    write_log("Pines de las electrovalvulas...");
 }
 
 #endif // _DEVICE_H_

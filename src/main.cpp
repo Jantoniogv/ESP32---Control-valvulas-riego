@@ -41,7 +41,7 @@ void setup()
   init_server();
 
   // Inicia la tarea que recibe los datos por LoRa
-  xTaskCreatePinnedToCore(receiveDataLora, "loraData", 2048, nullptr, 5, nullptr, 1);
+  xTaskCreatePinnedToCore(receiveDataLora, "loraData", 2048, nullptr, 0, nullptr, 1);
 
   // Inicia los pines usados para activas los dispositivos
   initPinDevice();
@@ -59,7 +59,9 @@ void loop()
   /*   if (Serial.available())
     {
       data_lora_receive_control(Serial.readString());
-      } */
+    } */
+
+  // DEBUG_PRINT("LOOP");
 
   vTaskDelay(pdMS_TO_TICKS(1));
 }

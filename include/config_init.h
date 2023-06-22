@@ -4,12 +4,14 @@
 
 #include <wifi.h>
 
+#define TIME_DELAY_ELEC_VAL 800
+
 wifi_mode_t initWifiType = WIFI_MODE_APSTA;
 
-String initSsidSTA = "DIGIFIBRA-Ap99";
+String initSsidSTA = "Router_Casa_Juncares";
 String initSsidAP = "MyESP32AP_2022";
 
-String initPassSTA = "612018_2482019";
+String initPassSTA = "Red_Juncares";
 String initPassAP = "adminadmin";
 
 String initHost = "ESP32_2022";

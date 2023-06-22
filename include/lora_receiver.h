@@ -25,6 +25,8 @@ void receiveDataLora(void *pvParameter)
 {
     for (;;)
     {
+        // DEBUG_PRINT("LORA_RECEIVER");
+
         String rssi = "RSSI";
         String packSize = "--";
         String packetData = "";
