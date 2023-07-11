@@ -4,8 +4,6 @@
 
 #include <wifi.h>
 
-#define TIME_DELAY_ELEC_VAL 800
-
 wifi_mode_t initWifiType = WIFI_MODE_APSTA;
 
 String initSsidSTA = "Router_Casa_Juncares";

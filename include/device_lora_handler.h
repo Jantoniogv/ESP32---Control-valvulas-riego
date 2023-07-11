@@ -4,11 +4,12 @@
 #include <Arduino.h>
 
 #include "device.h"
-#include "config_init.h"
 #include "lora_init.h"
 
 #include "debug_utils.h"
 #define DEBUG
+
+#define TIME_DELAY_ELEC_VAL 200
 
 void data_lora_receive_control(String data)
 {
