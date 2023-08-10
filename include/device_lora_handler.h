@@ -7,7 +7,7 @@
 #include "lora_init.h"
 
 #include "debug_utils.h"
-#define DEBUG
+// #define DEBUG
 
 #define TIME_DELAY_ELEC_VAL 200
 

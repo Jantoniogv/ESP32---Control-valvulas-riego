@@ -6,7 +6,7 @@
 #include "log.h"
 
 #include "debug_utils.h"
-#define DEBUG
+// #define DEBUG
 
 void send_data_lora(String data)
 {

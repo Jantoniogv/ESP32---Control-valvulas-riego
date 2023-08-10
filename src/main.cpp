@@ -12,7 +12,7 @@
 #include "log.h"
 
 #include "debug_utils.h"
-#define DEBUG
+// #define DEBUG
 
 void setup()
 {
